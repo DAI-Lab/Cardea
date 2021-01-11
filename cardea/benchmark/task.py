@@ -78,10 +78,10 @@ class Task:
                 the path to store the configurations.
         """
         _, file_type = os.path.splitext(file_path)
-        if file_type == 'pkl':
+        if file_type == '.pkl':
             with open(file_path, 'wb') as f:
                 pickle.dump(self, f)
-        elif file_type == 'json':
+        elif file_type == '.json':
             with open(file_path, 'w') as f:
                 json.dump(self.__dict__, f)
         else:
@@ -209,6 +209,6 @@ def create_tasks(pipeline_names=None, problem_names=None, dataset_name='mimic-ii
             if os.path.exists(task_path):
                 shutil.rmtree(task_path)
             os.mkdir(task_path)
-            task.save_as(os.path.join(task_path, 'meta.json', 'json'))
+            task.save_as(os.path.join(task_path, 'meta.json'))
 
     return tasks
